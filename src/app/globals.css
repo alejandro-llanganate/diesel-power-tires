@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+/* Desactiva dark mode automático de Tailwind / sistema */
+@custom-variant dark (&:where(.dark-mode-enabled, .dark-mode-enabled *));
+
+@theme inline {
+  --color-background: #ffffff;
+  --color-foreground: #0f172a;
+  --font-sans: var(--font-montserrat);
+}
+
+@layer base {
+  html {
+    color-scheme: light only;
+    background-color: #ffffff;
+  }
+
+  body {
+    background-color: #ffffff;
+    color: #0f172a;
+    font-family: var(--font-montserrat), system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+
+}
+
+:root {
+  --bg: #ffffff;
+  --bg-elevated: #f8fafc;
+  --bg-card: #ffffff;
+  --border: #e2e8f0;
+  --text: #0f172a;
+  --text-muted: #64748b;
+  --blue: #1565c0;
+  --blue-glow: #1a6fd4;
+  --yellow: #e6a800;
+  --yellow-hover: #f5c518;
+  --chrome: #334155;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #ffffff;
+    --bg-elevated: #f8fafc;
+    --bg-card: #ffffff;
+    --border: #e2e8f0;
+    --text: #0f172a;
+    --text-muted: #64748b;
+  }
+
+  html,
+  body {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+  }
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+button,
+a[href],
+label[for],
+select,
+summary,
+[role="button"] {
+  cursor: pointer;
+}
+
+input[type="number"] {
+  cursor: text;
+}
+
+::selection {
+  background: #1565c0;
+  color: #ffffff;
+}
+
+/* Leaflet usa z-index 400+; lo limitamos al bloque del mapa */
+#ubicaciones .leaflet-container,
+#ubicaciones .leaflet-pane,
+#ubicaciones .leaflet-top,
+#ubicaciones .leaflet-bottom,
+#ubicaciones .leaflet-control {
+  z-index: 1 !important;
+}
+
+#ubicaciones .leaflet-popup-pane {
+  z-index: 2 !important;
+}
+
+.leaflet-container {
+  background: #f1f5f9 !important;
+  font-family: inherit;
+}
+
+.leaflet-popup-content-wrapper {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border-radius: 12px !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.12) !important;
+}
+
+.leaflet-popup-tip {
+  background: #ffffff !important;
+}
+
+.leaflet-control-zoom a {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #e2e8f0 !important;
+}
+
+.leaflet-control-attribution {
+  background: rgba(255, 255, 255, 0.95) !important;
+  color: #64748b !important;
+}
